@@ -1,0 +1,286 @@
+[
+    {
+        "key": "»",
+        "value": "&#187;"
+    },
+    {
+        "key": "¼",
+        "value": "&#188;"
+    },
+    {
+        "key": "½",
+        "value": "&#189;"
+    },
+    {
+        "key": "¾",
+        "value": "&frac34;"
+    },
+    {
+        "key": "¿",
+        "value": "&iquest;"
+    },
+    {
+        "key": "×",
+        "value": "&times;"
+    },
+    {
+        "key": "÷",
+        "value": "&divide;"
+    },
+    {
+        "key": "À",
+        "value": "&Agrave;"
+    },
+    {
+        "key": "Á",
+        "value": "&Aacute;"
+    },
+    {
+        "key": "Â",
+        "value": "&Acirc;"
+    },
+    {
+        "key": "Ã",
+        "value": "&Atilde;"
+    },
+    {
+        "key": "Å",
+        "value": "&Aring;"
+    },
+    {
+        "key": "Ä",
+        "value": "&Aring;"
+    },
+    {
+        "key": "Æ",
+        "value": "&AElig;"
+    },
+    {
+        "key": "Ç",
+        "value": "&Ccedil;"
+    },
+    {
+        "key": "È",
+        "value": "&Egrave;"
+    },
+    {
+        "key": "É",
+        "value": "&Eacute;"
+    },
+    {
+        "key": "Ê",
+        "value": "&ECirc;"
+    },
+    {
+        "key": "Ë",
+        "value": "&Euml;"
+    },
+    {
+        "key": "Ì",
+        "value": "&Igrave;"
+    },
+    {
+        "key": "Í",
+        "value": "&Iacute;"
+    },
+    {
+        "key": "Î",
+        "value": "&Icirc;"
+    },
+    {
+        "key": "Ï",
+        "value": "&Iuml;"
+    },
+    {
+        "key": "Ð",
+        "value": "&ETH;"
+    },
+    {
+        "key": "Ñ",
+        "value": "&Ntilde;"
+    },
+    {
+        "key": "Ò",
+        "value": "&Ograve;"
+    },
+    {
+        "key": "Ó",
+        "value": "&Oacute;"
+    },
+    {
+        "key": "Ô",
+        "value": "&Ocirc;"
+    },
+    {
+        "key": "Õ",
+        "value": "&Otilde;"
+    },
+    {
+        "key": "Ö",
+        "value": "&Ouml;"
+    },
+    {
+        "key": "Ø",
+        "value": "&Oslash;"
+    },
+    {
+        "key": "Ù",
+        "value": "&Ugrave;"
+    },
+    {
+        "key": "Ú",
+        "value": "&Uacute;"
+    },
+    {
+        "key": "Û",
+        "value": "&Ucirc;"
+    },
+    {
+        "key": "Ü",
+        "value": "&Uuml;"
+    },
+    {
+        "key": "Ý",
+        "value": "&Yacute;"
+    },
+    {
+        "key": "Þ",
+        "value": "&THORN;"
+    },
+    {
+        "key": "ß",
+        "value": "&szlig;"
+    },
+    {
+        "key": "à",
+        "value": "&agrave;"
+    },
+    {
+        "key": "á",
+        "value": "&aacute;"
+    },
+    {
+        "key": "â",
+        "value": "&acirc;"
+    },
+    {
+        "key": "ã",
+        "value": "&atilde;"
+    },
+    {
+        "key": "å",
+        "value": "&aring;"
+    },
+    {
+        "key": "ä",
+        "value": "&uml;"
+    },
+    {
+        "key": "æ",
+        "value": "&aelig;"
+    },
+    {
+        "key": "ç",
+        "value": "&ccedil;"
+    },
+    {
+        "key": "è",
+        "value": "&egrave;"
+    },
+    {
+        "key": "é",
+        "value": "&eacute;"
+    },
+    {
+        "key": "ê",
+        "value": "&ecirc;"
+    },
+    {
+        "key": "ë",
+        "value": "&euml;"
+    },
+    {
+        "key": "ì",
+        "value": "&igrave;"
+    },
+    {
+        "key": "í",
+        "value": "&iacute;"
+    },
+    {
+        "key": "î",
+        "value": "&icirc;"
+    },
+    {
+        "key": "ï",
+        "value": "&iuml;"
+    },
+    {
+        "key": "ð",
+        "value": "&eth;"
+    },
+    {
+        "key": "ñ",
+        "value": "&ntilde;"
+    },
+    {
+        "key": "ò",
+        "value": "&ograve;"
+    },
+    {
+        "key": "ó",
+        "value": "&oacute;"
+    },
+    {
+        "key": "ô",
+        "value": "&ocirc;"
+    },
+    {
+        "key": "õ",
+        "value": "&otilde;"
+    },
+    {
+        "key": "ö",
+        "value": "&ouml;"
+    },
+    {
+        "key": "ø",
+        "value": "&oslash;"
+    },
+    {
+        "key": "ù",
+        "value": "&ugrave;"
+    },
+    {
+        "key": "ú",
+        "value": "&uacute;"
+    },
+    {
+        "key": "û",
+        "value": "&ucirc;"
+    },
+    {
+        "key": "ü",
+        "value": "&uuml;"
+    },
+    {
+        "key": "ý",
+        "value": "&yacute;"
+    },
+    {
+        "key": "þ",
+        "value": "&thorn;"
+    },
+    {
+        "key": "ÿ",
+        "value": "&yuml;"
+    },
+    {
+        "key": "º",
+        "value": "&ordm;"
+    },
+    {
+        "key": "®",
+        "value": "&reg;"
+    }
+]
