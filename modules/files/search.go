@@ -1,30 +1,42 @@
 package files
 
 import (
-	"github.com/rodkranz/char7/modules/settings"
-	"path/filepath"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
+var _files []string
 
-var filePaths []string
+type Filter struct {
+	FileName string
+	Exts     []string
+	Dir      string
+}
 
-func SearchFiles() ([]string, error) {
-	filePaths = make([]string, 0)
-	return filePaths, filepath.Walk(settings.Folder, walk)
+var optFilter *Filter
 
+func SearchFiles(filter *Filter) ([]string, error) {
+	optFilter = filter
+
+	_files = make([]string, 0)
+	return _files, filepath.Walk(filter.Dir, walk)
 }
 
 func walk(path string, info os.FileInfo, _ error) error {
-	if info.IsDir()  {
+	if info.IsDir() {
 		return nil
 	}
 
-	if !allowExtToContinue(filepath.Ext(info.Name()), settings.ExtFile) {
+	if len(optFilter.FileName) != 0 && !strings.Contains(info.Name(), optFilter.FileName) {
 		return nil
 	}
 
-	filePaths = append(filePaths, path)
+	if !allowExtToContinue(filepath.Ext(info.Name()), optFilter.Exts) {
+		return nil
+	}
+
+	_files = append(_files, path)
 	return nil
 }
 
