@@ -8,7 +8,7 @@ import (
 	"errors"
 	"strings"
 	"bytes"
-	"bitbucket.org/rkranz/tmp/modules/settings"
+	"github.com/rodkranz/char7/modules/settings"
 )
 
 type c7 struct {

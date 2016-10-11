@@ -3,8 +3,8 @@ package main
 import (
 	"runtime"
 
-	"bitbucket.org/rkranz/tmp/cmd"
-	_ "bitbucket.org/rkranz/tmp/modules/settings"
+	"github.com/rodkranz/char7/cmd"
+	_ "github.com/rodkranz/char7/modules/settings"
 )
 
 func init() {

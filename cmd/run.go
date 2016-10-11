@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"bitbucket.org/rkranz/tmp/modules/files"
-	"bitbucket.org/rkranz/tmp/modules/charset"
-	"bitbucket.org/rkranz/tmp/modules/settings"
+	"github.com/rodkranz/char7/modules/files"
+	"github.com/rodkranz/char7/modules/charset"
+	"github.com/rodkranz/char7/modules/settings"
 )
 
 func Run() error {

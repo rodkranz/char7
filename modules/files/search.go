@@ -1,7 +1,7 @@
 package files
 
 import (
-	"bitbucket.org/rkranz/tmp/modules/settings"
+	"github.com/rodkranz/char7/modules/settings"
 	"path/filepath"
 	"os"
 )
