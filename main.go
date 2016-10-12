@@ -6,9 +6,9 @@ import (
 	"github.com/rodkranz/char7/cmd"
 	"github.com/urfave/cli"
 
+	"fmt"
 	_ "github.com/rodkranz/char7/modules/settings"
 	"os"
-	"fmt"
 )
 
 const VER string = "v1.0.0"

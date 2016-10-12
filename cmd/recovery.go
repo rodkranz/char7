@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/urfave/cli"
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
+	"github.com/urfave/cli"
 )
 
 var CmdRecovery = cli.Command{
@@ -19,7 +19,6 @@ var CmdRecovery = cli.Command{
 	},
 }
 
-
 func runRecovery(ctx *cli.Context) error {
 	if ctx.IsSet("dir") {
 		settings.Dir = ctx.String("dir")
@@ -30,11 +29,11 @@ func runRecovery(ctx *cli.Context) error {
 	}
 
 	optFilter := &files.Filter{
-		Exts:     []string{settings.BackupName},
-		Dir:      settings.Dir,
+		Exts: []string{settings.BackupName},
+		Dir:  settings.Dir,
 	}
 
-	fmt.Printf("%v",optFilter)
+	fmt.Printf("%v", optFilter)
 
 	paths, err := files.SearchFiles(optFilter)
 	if err != nil {
