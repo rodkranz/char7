@@ -1,15 +1,17 @@
 package charset
 
 import (
+	"os"
+	"fmt"
 	"bufio"
 	"bytes"
-	"encoding/json"
 	"errors"
-	"fmt"
+	"strings"
+	"encoding/json"
+
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
-	"os"
-	"strings"
+	"github.com/rodkranz/char7/modules/chatdata"
 )
 
 type c7 struct {
@@ -36,13 +38,17 @@ func (cm *c7Map) Replace(line string) string {
 }
 
 func readCharSetJson(src string) (c7Map, error) {
+	var jsonParser *json.Decoder
 	charsetMap, err := os.Open(src)
 	if err != nil {
-		return c7Map{}, errors.New(fmt.Sprintf("Opening %s file: %s", src, err.Error()))
+		arrBytes := chatdata.MustAsset(".charset")
+		bsRead := bytes.NewReader(arrBytes)
+		jsonParser = json.NewDecoder(bsRead)
+	} else {
+		jsonParser = json.NewDecoder(charsetMap)
 	}
 
 	mapC7 := make([]c7, 0)
-	jsonParser := json.NewDecoder(charsetMap)
 	if err = jsonParser.Decode(&mapC7); err != nil {
 		return c7Map{}, errors.New(fmt.Sprintf("Parsing %s file: %s", src, err.Error()))
 	}

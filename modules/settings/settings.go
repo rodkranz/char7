@@ -1,5 +1,6 @@
 package settings
 
+
 var (
 	ExtFile    []string
 	FileName   string
@@ -7,6 +8,7 @@ var (
 	BackupName string
 	MapCharset string
 	Dir        string
+
 )
 
 func init() {
