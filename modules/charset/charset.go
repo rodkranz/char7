@@ -1,14 +1,15 @@
 package charset
 
 import (
-	"os"
 	"bufio"
-	"fmt"
+	"bytes"
 	"encoding/json"
 	"errors"
-	"strings"
-	"bytes"
+	"fmt"
+	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
+	"os"
+	"strings"
 )
 
 type c7 struct {
@@ -20,16 +21,18 @@ type c7Map struct {
 	Map []c7
 }
 
-func (cm *c7Map) Replace(line string) (string) {
-	var newLine string
+var HasChange bool
+
+func (cm *c7Map) Replace(line string) string {
 
 	for _, c := range cm.Map {
 		if strings.Contains(line, c.Key) {
-			newLine = strings.Replace(line, c.Key, c.Value, -1)
+			HasChange = true
+			line = strings.Replace(line, c.Key, c.Value, -1)
 		}
 	}
 
-	return newLine
+	return fmt.Sprintf("%s\n", line)
 }
 
 func readCharSetJson(src string) (c7Map, error) {
@@ -47,30 +50,30 @@ func readCharSetJson(src string) (c7Map, error) {
 	return c7Map{Map: mapC7}, nil
 }
 
-func CharSet(src string) (oldString, newString bytes.Buffer, err error) {
+func CharSet(src string) (err error) {
+	HasChange = false
 
 	f, err := os.Open(src)
 	if err != nil {
-		return oldString, newString, err
+		return err
 	}
 	defer f.Close()
 
 	c7map, err := readCharSetJson(settings.MapCharset)
 	if err != nil {
-		return oldString, newString, err
+		return err
 	}
 
+	var buff bytes.Buffer
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
 		line := scanner.Text()
-
-		oldString.WriteString(line + "\n")
-		newString.WriteString(c7map.Replace(line))
+		buff.WriteString(c7map.Replace(line))
 	}
 
 	if err := scanner.Err(); err != nil {
-		return oldString, newString, err
+		return err
 	}
 
-	return oldString, newString, nil
+	return files.Write(src, buff.Bytes())
 }
