@@ -27,22 +27,15 @@ var CmdCharSet = cli.Command{
 
 func runCharSet(ctx *cli.Context) error {
 
+	// Parse common information
+	parseFlags(ctx)
+
+	// split extensions
 	if ctx.IsSet("ext") {
 		settings.ExtFile = strings.Split(ctx.String("ext"), ",")
 	}
 
-	if ctx.IsSet("file") {
-		settings.FileName = ctx.String("file")
-	}
-
-	if ctx.IsSet("dir") {
-		settings.Dir = ctx.String("dir")
-	}
-
-	if ctx.IsSet("backupName") {
-		settings.BackupName = ctx.String("backupName")
-	}
-
+	// filter to find files
 	optFilter := &files.Filter{
 		FileName: settings.FileName,
 		Exts:     settings.ExtFile,
@@ -59,20 +52,30 @@ func runCharSet(ctx *cli.Context) error {
 		bkp := path + settings.BackupName
 
 		if !ctx.IsSet("backup") {
+			fmt.Fprintf(ctx.App.Writer, "Copyng %s to %s...   ", path, bkp)
 			if e := files.Copy(path, bkp); e != nil {
-				return e
+				fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+				continue
 			}
+			fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
 		}
 
+		fmt.Fprintf(ctx.App.Writer, "Finding chars to convert from %s..   ", path)
 		if e := charset.CharSet(path); e != nil {
-			return e
+			fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+			continue
 		}
+		fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
 
 		if !charset.HasChange {
 			total++
-
 			if !ctx.IsSet("backup") {
-				files.Delete(bkp)
+				fmt.Fprintf(ctx.App.Writer, "Deleting useless file %s..   ", path)
+				if err := files.Delete(bkp); err != nil {
+					fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+					continue
+				}
+				fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
 			}
 		}
 	}

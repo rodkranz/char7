@@ -1,10 +1,11 @@
 package cmd
 
 import (
+	"github.com/urfave/cli"
+
 	"fmt"
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
-	"github.com/urfave/cli"
 )
 
 var CmdRecovery = cli.Command{
@@ -20,42 +21,46 @@ var CmdRecovery = cli.Command{
 }
 
 func runRecovery(ctx *cli.Context) error {
-	if ctx.IsSet("dir") {
-		settings.Dir = ctx.String("dir")
-	}
 
-	if ctx.IsSet("backupName") {
-		settings.BackupName = ctx.String("backupName")
-	}
+	// Parse common information
+	parseFlags(ctx)
 
+	// filter to find files
 	optFilter := &files.Filter{
 		Exts: []string{settings.BackupName},
 		Dir:  settings.Dir,
 	}
-
-	fmt.Printf("%v", optFilter)
 
 	paths, err := files.SearchFiles(optFilter)
 	if err != nil {
 		return err
 	}
 
+	total := 0
 	for _, backupPath := range paths {
 		if (len(backupPath) - len(settings.BackupName)) < 0 {
 			continue
 		}
 
+		fmt.Fprintf(ctx.App.Writer, "Restouring %s...   ", backupPath)
 		restoreName := backupPath[:len(backupPath)-len(settings.BackupName)]
 		if err := files.Copy(backupPath, restoreName); err != nil {
-			return err
+			fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+			continue
 		}
+		fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+		total++
 
 		if ctx.IsSet("remove") {
+			fmt.Fprintf(ctx.App.Writer, "Removing backup %s...   ", backupPath)
 			if err := files.Delete(backupPath); err != nil {
-				return err
+				fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+				continue
 			}
+			fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
 		}
 	}
 
+	fmt.Fprintf(ctx.App.Writer, "Found %d backups, restoured %d files.\n", len(paths), total)
 	return nil
 }
