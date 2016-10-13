@@ -30,6 +30,6 @@ func init() {
 	ExtFile = []string{".php", ".html", ".htm", ".js", ".asp", ".tpl", ".txt"}
 	Backup = true
 	BackupName = ".c7"
-	MapCharset = ".charset"
+	MapCharset = ".c7map"
 	Dir = "./"
 }

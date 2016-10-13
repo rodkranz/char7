@@ -38,7 +38,7 @@ func ReadCharSetJson(src string) (c7Map, error) {
     var jsonParser *json.Decoder
     charsetMap, err := os.Open(src)
     if err != nil {
-        arrBytes := chatdata.MustAsset(".charset")
+        arrBytes := chatdata.MustAsset(settings.MapCharset)
         bsRead := bytes.NewReader(arrBytes)
         jsonParser = json.NewDecoder(bsRead)
     } else {
@@ -60,6 +60,6 @@ func GetMapping() (c7Map, error) {
 func init() {
     mapPath := settings.HomeDir + "/" + settings.MapCharset
     if _, err := os.Stat(mapPath); os.IsNotExist(err) {
-        files.Write(mapPath, chatdata.MustAsset(".charset"))
+        files.Write(mapPath, chatdata.MustAsset(settings.MapCharset))
     }
 }
