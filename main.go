@@ -1,14 +1,15 @@
 package main
 
 import (
+	"os"
+	"fmt"
 	"runtime"
 
-	"github.com/rodkranz/char7/cmd"
 	"github.com/urfave/cli"
 
-	"fmt"
+	"github.com/rodkranz/char7/cmd"
 	_ "github.com/rodkranz/char7/modules/settings"
-	"os"
+	_ "github.com/rodkranz/char7/modules/mapping"
 )
 
 const VER string = "v1.0.0"

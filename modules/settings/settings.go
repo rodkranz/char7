@@ -1,7 +1,12 @@
 package settings
 
+import (
+	"log"
+	"os/user"
+)
 
 var (
+	HomeDir    string
 	ExtFile    []string
 	FileName   string
 	Backup     bool
@@ -11,7 +16,16 @@ var (
 
 )
 
+func WorkDir() string {
+	usr, err := user.Current()
+	if err != nil {
+		log.Fatal( err )
+	}
+	return usr.HomeDir
+}
+
 func init() {
+	HomeDir = WorkDir()
 	FileName = ""
 	ExtFile = []string{".php", ".html", ".htm", ".js", ".asp", ".tpl", ".txt"}
 	Backup = true
