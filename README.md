@@ -14,7 +14,10 @@ Replace Utf8 encoding to Ascii code
 
 ## How to Compile it
 
- Compile those files from different platforms
+ We use [gobuild](http://gobuild.io) to do online cross-platform compiling work.  
+ You can see the full available binary list [here](https://gobuild.io/rodkranz/char7/master) 
+ or compile those files from different platforms in your owner computer.
+
 
 ### Requirements
 
