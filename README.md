@@ -1,6 +1,5 @@
-Go Package Manager [![Build Status](https://travis-ci.org/gpmgo/gopm.svg?branch=master)](https://travis-ci.org/gpmgo/gopm) [![Gopm Download](http://gopm.io/badge/github.com/gpmgo/gopm)](http://gopm.io/github.com/gpmgo/gopm)
-# Char7 #
-
+Char7  [![Build Status](https://travis-ci.org//rodkranz/char7.svg?branch=master)](https://travis-ci.org/gpmgo/gopm)
+==========================================
 Replace Utf8 encoding to Ascii code
 
 -----------------------
