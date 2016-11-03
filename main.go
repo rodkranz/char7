@@ -23,6 +23,8 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "CharSet"
 	app.Usage = "CharSet convert"
+	app.Author = "Kranz"
+	app.Email = "kranz@null.net"
 	app.Version = VER
 	app.Commands = []cli.Command{
 		cmd.CmdCharSet,
