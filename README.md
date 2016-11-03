@@ -1,4 +1,4 @@
-Char7  [![Build Status](https://travis-ci.org//rodkranz/char7.svg?branch=master)](https://travis-ci.org/gpmgo/gopm)
+Char7  [![Build Status](https://travis-ci.org//rodkranz/char7.svg?branch=master)](https://travis-ci.org/gpmgo/gopm) [![gorelease](https://dn-gorelease.qbox.me/gorelease-download-blue.svg)](https://gobuild.io/rodkranz/char7/master)
 ==========================================
 Replace Utf8 encoding to Ascii code
 
