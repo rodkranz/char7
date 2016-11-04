@@ -18,7 +18,16 @@ Replace Utf8 encoding to Ascii code
  You can see the full available binary list [here](https://gobuild.io/rodkranz/char7) 
  or compile those files from different platforms in your owner computer.
 
-
+### Download 
+    
+    
+   Download for [Mac OSx](tmpcode.com/char7/char7-darwin-amd64.zip)
+   Download for [Linux 386](tmpcode.com/char7/char7-linux-386.zip)
+   Download for [Linux amd64](tmpcode.com/char7/char7-linux-amd64.zip)
+   Download for [Linux arm](tmpcode.com/char7/char7-linux-arm.zip)
+   Download for [Windows 386](tmpcode.com/char7/char7-windows-386.zip)
+   Download for [Windows amd64](tmpcode.com/char7/char7-windows-amd64.zip)
+    
 ### Requirements
 
 * [GO Language](https://golang.org/doc/install)
