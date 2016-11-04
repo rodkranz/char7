@@ -9,6 +9,7 @@ import (
 	"github.com/rodkranz/char7/modules/charset"
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/tools"
 )
 
 var CmdCharSet = cli.Command{
@@ -49,7 +50,7 @@ func runCharSet(ctx *cli.Context) error {
 
 	var total int = 0
 	for _, path := range list {
-		bkp := path + settings.BackupName
+		bkp := tools.GenBackupNameFor(path)
 
 		if !ctx.IsSet("backup") {
 			fmt.Fprintf(ctx.App.Writer, "Copyng %s to %s...   ", path, bkp)
