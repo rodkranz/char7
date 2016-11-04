@@ -20,17 +20,17 @@ Replace Utf8 encoding to Ascii code
 
 ### Download 
     
-   Download for [Mac OSx](tmpcode.com/char7/char7-darwin-amd64.zip)
+   Download for [Mac OSx](http://tmpcode.com/char7/char7-darwin-amd64.zip)
    
-   Download for [Linux 386](tmpcode.com/char7/char7-linux-386.zip)
+   Download for [Linux 386](http://tmpcode.com/char7/char7-linux-386.zip)
    
-   Download for [Linux amd64](tmpcode.com/char7/char7-linux-amd64.zip)
+   Download for [Linux amd64](http://tmpcode.com/char7/char7-linux-amd64.zip)
    
-   Download for [Linux arm](tmpcode.com/char7/char7-linux-arm.zip)
+   Download for [Linux arm](http://tmpcode.com/char7/char7-linux-arm.zip)
    
-   Download for [Windows 386](tmpcode.com/char7/char7-windows-386.zip)
+   Download for [Windows 386](http://tmpcode.com/char7/char7-windows-386.zip)
    
-   Download for [Windows amd64](tmpcode.com/char7/char7-windows-amd64.zip)
+   Download for [Windows amd64](http://tmpcode.com/char7/char7-windows-amd64.zip)
     
 ### Requirements
 
