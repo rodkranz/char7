@@ -37,7 +37,7 @@ func Test_C7Config_Should_Return_Default_Mapping(t *testing.T) {
 
 	// Mirror C7Map of mapping file-
 	expectedC7Map := c7Map{
-		Map: []c7{
+		Map: []C7{
 			{Key: "»", Value: "&#187;"},
 			{Key: "¼", Value: "&#188;"},
 		},

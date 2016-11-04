@@ -1,3 +1,4 @@
+// Package settings application
 package settings
 
 import (
@@ -16,6 +17,7 @@ var (
 
 )
 
+// WorkDir retuns string with $HOME path of user.
 func WorkDir() string {
 	usr, err := user.Current()
 	if err != nil {
