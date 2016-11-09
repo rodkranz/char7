@@ -7,14 +7,14 @@ import (
 	"github.com/rodkranz/char7/modules/settings"
 )
 
-func Test_C7Config_Should_Exists_In_Home(t *testing.T) {
+func TestC7ConfigShouldExistsInHome(t *testing.T) {
 	mapPath := settings.HomeDir + "/" + settings.MapCharset
 	if _, err := os.Stat(mapPath); os.IsNotExist(err) {
 		t.Errorf("Expected that %v exists in %v.", settings.MapCharset, settings.HomeDir)
 	}
 }
 
-func Test_C7Config_Should_Read_Map_From_Home(t *testing.T) {
+func TestC7ConfigShouldReadMapFromHome(t *testing.T) {
 	mapPath := settings.HomeDir + "/" + settings.MapCharset
 	_, err := ReadCharSetJson(mapPath)
 	if err != nil {
@@ -22,7 +22,7 @@ func Test_C7Config_Should_Read_Map_From_Home(t *testing.T) {
 	}
 }
 
-func Test_C7Config_Should_Return_Default_Mapping(t *testing.T) {
+func TestC7ConfigShouldReturnDefaultMapping(t *testing.T) {
 	// Create Fake Map in temp dir
 	f, err := ioutil.TempFile("", "charset-test")
 	if err != nil {
@@ -65,9 +65,3 @@ func Test_C7Config_Should_Return_Default_Mapping(t *testing.T) {
 		}
 	}
 }
-
-
-
-//func Test_C7Config_Should_Read_From_Home(t *testing.T) {
-//
-//}

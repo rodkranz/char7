@@ -17,7 +17,7 @@ func checkSize(t *testing.T, path string, size int64) {
 	}
 }
 
-func Test_CharSet_Should_Convert_Temporary_File(t *testing.T) {
+func TestCharSetShouldConvertTemporaryFile(t *testing.T) {
 	f, err := ioutil.TempFile("", "charset-test")
 	if err != nil {
 		t.Fatal(err)
@@ -58,7 +58,7 @@ func Test_CharSet_Should_Convert_Temporary_File(t *testing.T) {
 		t.Error("The variable HasChange must return true but got false!")
 	}
 }
-func Test_CharSet_Should_Return_Error_Message(t *testing.T) {
+func TestCharSetShouldReturnErrorMessage(t *testing.T) {
 	err := CharSet("/_not_exits_file")
 	if err == nil {
 		t.Errorf("It should return a error message but got %v", err)
