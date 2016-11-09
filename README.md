@@ -1,5 +1,5 @@
-# Char7 #
-
+Char7  [![Build Status](https://travis-ci.org/rodkranz/char7.svg?branch=master)](https://travis-ci.org/rodkranz/char7) [![gorelease](https://dn-gorelease.qbox.me/gorelease-download-blue.svg)](https://gobuild.io/rodkranz/char7/master)
+==========================================
 Replace Utf8 encoding to Ascii code
 
 -----------------------
@@ -14,8 +14,23 @@ Replace Utf8 encoding to Ascii code
 
 ## How to Compile it
 
- Compile those files from different platforms
+ You can see the full available binary list [here](https://gobuild.io/rodkranz/char7) 
+ or compile those files from different platforms in your owner computer.
 
+### Download 
+    
+   Download for [Mac OSx](http://tmpcode.com/char7/char7-darwin-amd64.zip)
+   
+   Download for [Linux 386](http://tmpcode.com/char7/char7-linux-386.zip)
+   
+   Download for [Linux amd64](http://tmpcode.com/char7/char7-linux-amd64.zip)
+   
+   Download for [Linux arm](http://tmpcode.com/char7/char7-linux-arm.zip)
+   
+   Download for [Windows 386](http://tmpcode.com/char7/char7-windows-386.zip)
+   
+   Download for [Windows amd64](http://tmpcode.com/char7/char7-windows-amd64.zip)
+    
 ### Requirements
 
 * [GO Language](https://golang.org/doc/install)
