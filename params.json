@@ -1,0 +1,6 @@
+{
+  "name": "Char7",
+  "tagline": "",
+  "body": "### Welcome to Char7.\r\nThis program has been made for helping people replace some [ASCII](https://en.wikipedia.org/wiki/ASCII) code to [HTML](https://en.wikipedia.org/wiki/HTML) codes.\r\n\r\n### The Main Purpose\r\nIt already have made in PHP, but it was one of the first codes that I made, then now, I would like to create something best, creating a backups, can restore those backups and custom the map of things that I can change.\r\nThen I have written the new Char7 (or c7) using GO lang. \r\n\r\n### Authors and Contributors\r\nThe owner and programer of Char7 is Rodrigo Lopes (@rodkranz), start programming when he was going to Amsterdam to ReactNL conference on 11 October.\r\n\r\n### Support or Contact\r\nHaving trouble with Char7? Check out our [documentation](https://github.com/rodkranz/char7/blob/master/README.md) or [issues](https://github.com/rodkranz/char7/issues) and we’ll help you sort it out.\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
