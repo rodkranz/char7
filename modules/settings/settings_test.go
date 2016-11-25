@@ -1,6 +1,9 @@
 package settings
 
-import "testing"
+import (
+	"testing"
+)
+
 
 func TestWorkDirShouldReturnCurrentUserFolder(t *testing.T) {
 	s := WorkDir()

@@ -14,7 +14,7 @@ func TestC7ConfigShouldExistsInHome(t *testing.T) {
 	}
 }
 
-func TestC7ConfigShouldReadMapFromHome(t *testing.T) {
+func TestReadCharSetJsonFromHome(t *testing.T) {
 	mapPath := settings.HomeDir + "/" + settings.MapCharset
 	_, err := ReadCharSetJson(mapPath)
 	if err != nil {
@@ -22,7 +22,7 @@ func TestC7ConfigShouldReadMapFromHome(t *testing.T) {
 	}
 }
 
-func TestC7ConfigShouldReturnDefaultMapping(t *testing.T) {
+func TestReadCharSetJsonFromFile(t *testing.T) {
 	// Create Fake Map in temp dir
 	f, err := ioutil.TempFile("", "charset-test")
 	if err != nil {
