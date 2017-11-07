@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-var _files []string
+var files []string
 
 type Filter struct {
 	FileName string
@@ -16,11 +16,15 @@ type Filter struct {
 
 var optFilter *Filter
 
+func init() {
+	optFilter = new(Filter)
+}
+
 func SearchFiles(filter *Filter) ([]string, error) {
 	optFilter = filter
 
-	_files = make([]string, 0)
-	return _files, filepath.Walk(filter.Dir, walk)
+	files = make([]string, 0)
+	return files, filepath.Walk(filter.Dir, walk)
 }
 
 func walk(path string, info os.FileInfo, _ error) error {
@@ -36,7 +40,7 @@ func walk(path string, info os.FileInfo, _ error) error {
 		return nil
 	}
 
-	_files = append(_files, path)
+	files = append(files, path)
 	return nil
 }
 

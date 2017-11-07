@@ -1,14 +1,16 @@
 package cmd
 
 import (
-	"github.com/urfave/cli"
-
 	"fmt"
+
+	"gopkg.in/urfave/cli.v2"
+
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
 )
 
-var CmdRecovery = cli.Command{
+
+var CmdRecovery = &cli.Command{
 	Name:        "recovery",
 	Usage:       "recovery backup",
 	Description: `restore backup files and overwride the file wripped.`,

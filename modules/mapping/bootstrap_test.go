@@ -1,20 +1,21 @@
 package mapping
 
 import (
+	"io/ioutil"
 	"os"
 	"testing"
-	"io/ioutil"
+
 	"github.com/rodkranz/char7/modules/settings"
 )
 
-func TestC7ConfigShouldExistsInHome(t *testing.T) {
+func Test_C7Config_Should_Exists_In_Home(t *testing.T) {
 	mapPath := settings.HomeDir + "/" + settings.MapCharset
 	if _, err := os.Stat(mapPath); os.IsNotExist(err) {
 		t.Errorf("Expected that %v exists in %v.", settings.MapCharset, settings.HomeDir)
 	}
 }
 
-func TestReadCharSetJsonFromHome(t *testing.T) {
+func Test_C7Config_Should_Read_Map_From_Home(t *testing.T) {
 	mapPath := settings.HomeDir + "/" + settings.MapCharset
 	_, err := ReadCharSetJson(mapPath)
 	if err != nil {
@@ -22,7 +23,7 @@ func TestReadCharSetJsonFromHome(t *testing.T) {
 	}
 }
 
-func TestReadCharSetJsonFromFile(t *testing.T) {
+func Test_C7Config_Should_Return_Default_Mapping(t *testing.T) {
 	// Create Fake Map in temp dir
 	f, err := ioutil.TempFile("", "charset-test")
 	if err != nil {
@@ -37,7 +38,7 @@ func TestReadCharSetJsonFromFile(t *testing.T) {
 
 	// Mirror C7Map of mapping file-
 	expectedC7Map := c7Map{
-		Map: []C7{
+		Map: []c7{
 			{Key: "»", Value: "&#187;"},
 			{Key: "¼", Value: "&#188;"},
 		},
@@ -49,7 +50,8 @@ func TestReadCharSetJsonFromFile(t *testing.T) {
 		t.Error("Expected got a error message but got a nil")
 	}
 
-	m1: for _, c7 := range c7m.Map {
+m1:
+	for _, c7 := range c7m.Map {
 		found := false
 		for _, c7F := range expectedC7Map.Map {
 			if c7F.Key == c7.Key {
@@ -65,3 +67,7 @@ func TestReadCharSetJsonFromFile(t *testing.T) {
 		}
 	}
 }
+
+//func Test_C7Config_Should_Read_From_Home(t *testing.T) {
+//
+//}

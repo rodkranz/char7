@@ -1,34 +1,44 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 	"runtime"
 
-	"github.com/urfave/cli"
+	"gopkg.in/urfave/cli.v2"
 
 	"github.com/rodkranz/char7/cmd"
-	_ "github.com/rodkranz/char7/modules/settings"
+
 	_ "github.com/rodkranz/char7/modules/mapping"
+	_ "github.com/rodkranz/char7/modules/settings"
 )
 
-const VER string = "v1.0.0"
+// AppName is the application name
+const AppName string = "char7"
+// AppVer is the current version of application
+const AppVer string = "v1.0.0"
 
 func init() {
+	// Allow to use all core of computer
 	runtime.GOMAXPROCS(runtime.NumCPU())
 }
 
 func main() {
-
-	app := cli.NewApp()
-	app.Name = "CharSet"
-	app.Usage = "CharSet convert"
-	app.Author = "Kranz"
-	app.Email = "kranz@null.net"
-	app.Version = VER
-	app.Commands = []cli.Command{
-		cmd.CmdCharSet,
-		cmd.CmdRecovery,
+	app := cli.App{
+		Name:  AppName,
+		Usage: "CharSet convert",
+		Description: "Replace Utf8 encoding to Ascii code",
+		Authors: []*cli.Author{
+			&cli.Author{
+				Name: "Rodrigo Kranz",
+				Email: "kranz@null.net",
+			},
+		},
+		Version: AppVer,
+		Commands: []*cli.Command{
+			cmd.CmdCharSet,
+			cmd.CmdRecovery,
+		},
 	}
 
 	app.Flags = append(app.Flags, []cli.Flag{}...)

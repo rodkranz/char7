@@ -4,15 +4,16 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/urfave/cli"
+	"gopkg.in/urfave/cli.v2"
 
 	"github.com/rodkranz/char7/modules/charset"
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
-	"github.com/rodkranz/char7/modules/tools"
 )
 
-var CmdCharSet = cli.Command{
+// CmdCharSet is the main command for application
+// define information about the program as parameters
+var CmdCharSet = &cli.Command{
 	Name:        "charset",
 	Usage:       "Change charset to html cod",
 	Description: `change key in map to value`,
@@ -26,6 +27,8 @@ var CmdCharSet = cli.Command{
 	},
 }
 
+// runCharSet is the funcation that make the magic
+// find files with filter defined by user and resturn the files.
 func runCharSet(ctx *cli.Context) error {
 
 	// Parse common information
@@ -43,6 +46,7 @@ func runCharSet(ctx *cli.Context) error {
 		Dir:      settings.Dir,
 	}
 
+	// search files using the filter defined by user
 	list, err := files.SearchFiles(optFilter)
 	if err != nil {
 		return err
@@ -50,11 +54,11 @@ func runCharSet(ctx *cli.Context) error {
 
 	var total int = 0
 	for _, path := range list {
-		bkp := tools.GenBackupNameFor(path)
+		bkpPath := path + settings.BackupName
 
 		if !ctx.IsSet("backup") {
-			fmt.Fprintf(ctx.App.Writer, "Copyng %s to %s...   ", path, bkp)
-			if e := files.Copy(path, bkp); e != nil {
+			fmt.Fprintf(ctx.App.Writer, "Copyng %s to %s...   ", path, bkpPath)
+			if e := files.Copy(path, bkpPath); e != nil {
 				fmt.Fprintln(ctx.App.Writer, "[FAIL]")
 				continue
 			}
@@ -72,7 +76,7 @@ func runCharSet(ctx *cli.Context) error {
 			total++
 			if !ctx.IsSet("backup") {
 				fmt.Fprintf(ctx.App.Writer, "Deleting useless file %s..   ", path)
-				if err := files.Delete(bkp); err != nil {
+				if err := files.Delete(bkpPath); err != nil {
 					fmt.Fprintln(ctx.App.Writer, "[FAIL]")
 					continue
 				}
