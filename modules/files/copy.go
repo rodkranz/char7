@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// Copy make a copy of file
 func Copy(src, dst string) error {
 	in, err := os.Open(src)
 	if err != nil {

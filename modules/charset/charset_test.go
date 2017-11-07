@@ -1,10 +1,10 @@
 package charset
 
 import (
+	"bytes"
+	"io/ioutil"
 	"os"
 	"testing"
-	"io/ioutil"
-	"bytes"
 )
 
 func checkSize(t *testing.T, path string, size int64) {

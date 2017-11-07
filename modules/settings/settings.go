@@ -6,20 +6,27 @@ import (
 )
 
 var (
-	HomeDir    string
-	ExtFile    []string
-	FileName   string
-	Backup     bool
+	// HomeDir is the user dir
+	HomeDir string
+	// ExtFile is the extensions allowed to replace
+	ExtFile []string
+	// FileName specify only one file to change
+	FileName string
+	// Backup indicate if has backup or not
+	Backup bool
+	// BackupName indicate backup's name
 	BackupName string
+	// MapCharset is the file path where has the map config.
 	MapCharset string
-	Dir        string
-
+	// Dir is the directory where the app will looking for files.
+	Dir string
 )
 
+// WorkDir return the current user's dir
 func WorkDir() string {
 	usr, err := user.Current()
 	if err != nil {
-		log.Fatal( err )
+		log.Fatal(err)
 	}
 	return usr.HomeDir
 }

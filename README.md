@@ -1,4 +1,4 @@
-Char7  [![Build Status](https://travis-ci.org/rodkranz/char7.svg?branch=master)](https://travis-ci.org/rodkranz/char7) [![gorelease](https://dn-gorelease.qbox.me/gorelease-download-blue.svg)](https://gobuild.io/rodkranz/char7/master)
+Char7  [![Build Status](https://travis-ci.org/rodkranz/char7.svg?branch=master)](https://travis-ci.org/rodkranz/char7) [![gorelease](https://dn-gorelease.qbox.me/gorelease-download-blue.svg)](https://gobuild.io/rodkranz/char7/master) [![Go Report Card](https://goreportcard.com/badge/github.com/rodkranz/char7)](https://goreportcard.com/report/github.com/rodkranz/char7)
 ==========================================
 Replace Utf8 encoding to Ascii code
 
