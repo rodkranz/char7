@@ -52,7 +52,7 @@ func runCharSet(ctx *cli.Context) error {
 		return err
 	}
 
-	var total int = 0
+	var total int
 	for _, path := range list {
 		bkpPath := path + settings.BackupName
 

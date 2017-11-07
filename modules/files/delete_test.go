@@ -1,9 +1,9 @@
 package files
 
 import (
-	"testing"
-	"os"
 	"io/ioutil"
+	"os"
+	"testing"
 )
 
 func TestDelete(t *testing.T) {

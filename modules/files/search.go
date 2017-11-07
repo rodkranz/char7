@@ -8,6 +8,7 @@ import (
 
 var files []string
 
+// Filter define options of search
 type Filter struct {
 	FileName string
 	Exts     []string
@@ -20,6 +21,7 @@ func init() {
 	optFilter = new(Filter)
 }
 
+// SearchFiles return the list of files that were found by filter specification
 func SearchFiles(filter *Filter) ([]string, error) {
 	optFilter = filter
 

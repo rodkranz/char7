@@ -1,10 +1,10 @@
 package files
 
 import (
-	"testing"
-	"os"
 	"io/ioutil"
+	"os"
 	"path/filepath"
+	"testing"
 )
 
 type TestSetup struct {

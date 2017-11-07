@@ -17,7 +17,7 @@ func Test_C7Config_Should_Exists_In_Home(t *testing.T) {
 
 func Test_C7Config_Should_Read_Map_From_Home(t *testing.T) {
 	mapPath := settings.HomeDir + "/" + settings.MapCharset
-	_, err := ReadCharSetJson(mapPath)
+	_, err := ReadCharSetJSON(mapPath)
 	if err != nil {
 		t.Errorf("Expected map should loaded from home, but got a error: %v", err.Error())
 	}
@@ -37,7 +37,7 @@ func Test_C7Config_Should_Return_Default_Mapping(t *testing.T) {
 	f.Close()
 
 	// Mirror C7Map of mapping file-
-	expectedC7Map := c7Map{
+	expectedC7Map := C7Map{
 		Map: []c7{
 			{Key: "»", Value: "&#187;"},
 			{Key: "¼", Value: "&#188;"},
@@ -45,7 +45,7 @@ func Test_C7Config_Should_Return_Default_Mapping(t *testing.T) {
 	}
 
 	//
-	c7m, err := ReadCharSetJson(filename)
+	c7m, err := ReadCharSetJSON(filename)
 	if err != nil {
 		t.Error("Expected got a error message but got a nil")
 	}

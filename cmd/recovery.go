@@ -9,7 +9,7 @@ import (
 	"github.com/rodkranz/char7/modules/settings"
 )
 
-
+// CmdRecovery is command for recovery any data transformed for application
 var CmdRecovery = &cli.Command{
 	Name:        "recovery",
 	Usage:       "recovery backup",

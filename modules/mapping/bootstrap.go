@@ -18,11 +18,13 @@ type c7 struct {
 	Value string `json:"value"`
 }
 
-type c7Map struct {
+// C7Map is map of things that need to replace
+type C7Map struct {
 	Map []c7
 }
 
-func (cm *c7Map) Replace(line string) (bool, string) {
+// Replace find text that needs to replace
+func (cm *C7Map) Replace(line string) (bool, string) {
 	HasChange := false
 	for _, c := range cm.Map {
 		if strings.Contains(line, c.Key) {
@@ -33,7 +35,8 @@ func (cm *c7Map) Replace(line string) (bool, string) {
 	return HasChange, fmt.Sprintf("%s\n", line)
 }
 
-func ReadCharSetJson(src string) (c7Map, error) {
+// ReadCharSetJSON read file ".c7map" and load the configuration
+func ReadCharSetJSON(src string) (C7Map, error) {
 	var jsonParser *json.Decoder
 	charsetMap, err := os.Open(src)
 	if err != nil {
@@ -46,14 +49,15 @@ func ReadCharSetJson(src string) (c7Map, error) {
 
 	mapC7 := make([]c7, 0)
 	if err = jsonParser.Decode(&mapC7); err != nil {
-		return c7Map{}, errors.New(fmt.Sprintf("Parsing %s file: %s", src, err.Error()))
+		return C7Map{}, fmt.Errorf("parsing %s file: %s", src, err.Error())
 	}
 
-	return c7Map{Map: mapC7}, nil
+	return C7Map{Map: mapC7}, nil
 }
 
-func GetMapping() (c7Map, error) {
-	return ReadCharSetJson(settings.MapCharset)
+// GetMapping returns map of things that must be replaced
+func GetMapping() (C7Map, error) {
+	return ReadCharSetJSON(settings.MapCharset)
 }
 
 func init() {

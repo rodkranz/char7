@@ -15,6 +15,7 @@ import (
 
 // AppName is the application name
 const AppName string = "char7"
+
 // AppVer is the current version of application
 const AppVer string = "v1.0.0"
 
@@ -25,12 +26,12 @@ func init() {
 
 func main() {
 	app := cli.App{
-		Name:  AppName,
-		Usage: "CharSet convert",
+		Name:        AppName,
+		Usage:       "CharSet convert",
 		Description: "Replace Utf8 encoding to Ascii code",
 		Authors: []*cli.Author{
 			&cli.Author{
-				Name: "Rodrigo Kranz",
+				Name:  "Rodrigo Kranz",
 				Email: "kranz@null.net",
 			},
 		},

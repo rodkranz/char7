@@ -1,10 +1,10 @@
 package files
 
 import (
-	"testing"
+	"fmt"
 	"io/ioutil"
 	"os"
-	"fmt"
+	"testing"
 )
 
 func TestCopy(t *testing.T) {
