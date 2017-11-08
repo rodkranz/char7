@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"os"
 	"runtime"
-
+	
 	"gopkg.in/urfave/cli.v2"
-
+	
 	"github.com/rodkranz/char7/cmd"
 	_ "github.com/rodkranz/char7/modules/mapping"
 	_ "github.com/rodkranz/char7/modules/settings"
@@ -41,14 +41,14 @@ func main() {
 			cmd.Recovery,
 		},
 	}
-
+	
 	app.Flags = append(app.Flags, []cli.Flag{}...)
 	err := app.Run(os.Args)
-
+	
 	if err != nil {
 		fmt.Fprintf(app.Writer, "Error: %s\n", err.Error())
 		os.Exit(1)
 	}
-
+	
 	os.Exit(0)
 }
