@@ -20,6 +20,7 @@ go:
 go_import_path: github.com/golang/dep
 
 env:
+  - GO15VENDOREXPERIMENT="1"
   - DEP_VERSION="0.3.2"
   - GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
   - PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
