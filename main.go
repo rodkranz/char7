@@ -1,4 +1,4 @@
-// +build go1.2
+// +build go1.7
 package main
 
 import (
