@@ -2,20 +2,14 @@
 
 
 [[projects]]
-  branch = "master"
-  name = "github.com/Unknwon/log"
-  packages = ["."]
-  revision = "e617c87089d3ff2ae05098eac8c9386069cd8461"
-
-[[projects]]
   branch = "v2"
   name = "gopkg.in/urfave/cli.v2"
   packages = ["."]
-  revision = "50a0fdeea6330854c7b05371cce1fac8c7e636d2"
+  revision = "b2bf3c5abeb90da407891aecd1df2c5a1f6170c1"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "7e22c7fcd676a2ffc5620fa511ebffeb495bd1e39ea8d6a15b30f5bdc1a6b72f"
+  inputs-digest = "951114246b91adb0ec0e66b23048b914b0f12cdeb03946e1b326d9de0bc9bb0f"
   solver-name = "gps-cdcl"
   solver-version = 1
