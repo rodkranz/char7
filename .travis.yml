@@ -3,6 +3,16 @@ language: go
 
 go_import_path: github.com/golang/dep
 
+install:
+  # Add Godeps dependencies to GOPATH and PATH
+  - export GOPATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace:$GOPATH"
+  - export PATH="${TRAVIS_BUILD_DIR}/Godeps/_workspace/bin:$PATH"
+
+before_script:
+  - go vet ./...
+  - go get -u github.com/golang/dep
+  - dep ensure
+
 go:
   - 1.7
   - 1.7.3
@@ -19,7 +29,7 @@ go:
   - 1.9.1
   - 1.9.2
 
-before_script: $GOPATH/bin/dep ensure
+before-script:
 
 script: go test ./... -v -cover -race
 
