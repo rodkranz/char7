@@ -2,6 +2,36 @@
 
 
 [[projects]]
+  name = "github.com/fatih/color"
+  packages = ["."]
+  revision = "570b54cabe6b8eb0bc2dfce68d964677d63b5260"
+  version = "v1.5.0"
+
+[[projects]]
+  name = "github.com/mattn/go-colorable"
+  packages = ["."]
+  revision = "167de6bfdfba052fa6b2d3664c8f5272e23c9072"
+  version = "v0.0.9"
+
+[[projects]]
+  name = "github.com/mattn/go-isatty"
+  packages = ["."]
+  revision = "0360b2af4f38e8d38c7fce2a9f4e702702d73a39"
+  version = "v0.0.3"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/sys"
+  packages = ["unix"]
+  revision = "75813c647272dd855bda156405bf844a5414f5bf"
+
+[[projects]]
+  name = "gopkg.in/clog.v1"
+  packages = ["."]
+  revision = "8492a6faa632c31ba82f562b53b4a6e5eacf2732"
+  version = "v1.1.1"
+
+[[projects]]
   branch = "v2"
   name = "gopkg.in/urfave/cli.v2"
   packages = ["."]
@@ -10,6 +40,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "951114246b91adb0ec0e66b23048b914b0f12cdeb03946e1b326d9de0bc9bb0f"
+  inputs-digest = "040dc3047c2cff9ab45640002de8f5d142534d72438538029d349b628f606ef2"
   solver-name = "gps-cdcl"
   solver-version = 1

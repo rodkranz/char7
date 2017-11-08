@@ -2,9 +2,9 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"runtime"
+	"log"
 	
 	"gopkg.in/urfave/cli.v2"
 	
@@ -46,9 +46,8 @@ func main() {
 	err := app.Run(os.Args)
 	
 	if err != nil {
-		fmt.Fprintf(app.Writer, "Error: %s\n", err.Error())
+		log.Fatalf( "Error: %s\n", err.Error())
 		os.Exit(1)
 	}
-	
 	os.Exit(0)
 }

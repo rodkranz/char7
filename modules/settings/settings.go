@@ -34,7 +34,7 @@ func WorkDir() string {
 func init() {
 	HomeDir = WorkDir()
 	FileName = ""
-	ExtFile = []string{".php", ".html", ".htm", ".js", ".asp", ".tpl", ".txt"}
+	ExtFile = []string{".php", ".html", ".htm", ".js", ".asp", ".tpl", ".txt", ".srt"}
 	Backup = true
 	BackupName = ".c7"
 	MapCharset = ".c7map"

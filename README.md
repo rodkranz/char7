@@ -6,7 +6,7 @@ Replace Utf8 encoding to Ascii code
 ### Source ###
 
 * Char7 Source
-* Version: 1.0.0
+* Version: 1.0.2
 * License: ISC
 
 

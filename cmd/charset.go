@@ -1,14 +1,14 @@
 package cmd
 
 import (
-	"fmt"
 	"strings"
-
+	
 	"gopkg.in/urfave/cli.v2"
-
-	"github.com/rodkranz/char7/modules/charset"
+	
 	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/logger"
+	"github.com/rodkranz/char7/modules/charset"
 )
 
 // CharSet is the main command for application
@@ -30,61 +30,61 @@ var CharSet = &cli.Command{
 // runCharSet is the funcation that make the magic
 // find files with filter defined by user and resturn the files.
 func runCharSet(ctx *cli.Context) error {
-
+	
 	// Parse common information
 	parseFlags(ctx)
-
+	
 	// split extensions
 	if ctx.IsSet("ext") {
 		settings.ExtFile = strings.Split(ctx.String("ext"), ",")
 	}
-
+	
 	// filter to find files
 	optFilter := &files.Filter{
 		FileName: settings.FileName,
 		Exts:     settings.ExtFile,
 		Dir:      settings.Dir,
 	}
-
+	
 	// search files using the filter defined by user
 	list, err := files.SearchFiles(optFilter)
 	if err != nil {
 		return err
 	}
-
+	
 	var total int
 	for _, path := range list {
 		bkpPath := path + settings.BackupName
-
 		if !ctx.IsSet("backup") {
-			fmt.Fprintf(ctx.App.Writer, "Copyng %s to %s...   ", path, bkpPath)
+			logger.Copy(path, bkpPath)
 			if e := files.Copy(path, bkpPath); e != nil {
-				fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+				logger.Fail()
 				continue
 			}
-			fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+			logger.Success()
 		}
-
-		fmt.Fprintf(ctx.App.Writer, "Finding chars to convert from %s..   ", path)
+		
+		logger.Convert(path)
 		if e := charset.CharSet(path); e != nil {
-			fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+			logger.Fail()
 			continue
 		}
-		fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
-
+		logger.Success()
+		
+		//
 		if !charset.HasChange {
 			total++
 			if !ctx.IsSet("backup") {
-				fmt.Fprintf(ctx.App.Writer, "Deleting useless file %s..   ", path)
+				logger.Delete(path)
 				if err := files.Delete(bkpPath); err != nil {
-					fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+					logger.Fail()
 					continue
 				}
-				fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+				logger.Success()
 			}
 		}
 	}
-
-	fmt.Fprintf(ctx.App.Writer, "Found %d files, changed %d files.\n", len(list), total)
+	
+	logger.Information(len(list), total)
 	return nil
 }
