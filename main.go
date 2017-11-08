@@ -1,4 +1,4 @@
-// +build go1.9
+// +build go1.2
 package main
 
 import (
@@ -9,7 +9,6 @@ import (
 	"gopkg.in/urfave/cli.v2"
 
 	"github.com/rodkranz/char7/cmd"
-
 	_ "github.com/rodkranz/char7/modules/mapping"
 	_ "github.com/rodkranz/char7/modules/settings"
 )
