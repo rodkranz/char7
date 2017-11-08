@@ -11,9 +11,9 @@ import (
 	"github.com/rodkranz/char7/modules/settings"
 )
 
-// CmdCharSet is the main command for application
+// CharSet is the main command for application
 // define information about the program as parameters
-var CmdCharSet = &cli.Command{
+var CharSet = &cli.Command{
 	Name:        "charset",
 	Usage:       "Change charset to html cod",
 	Description: `change key in map to value`,
