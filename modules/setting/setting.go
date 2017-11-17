@@ -1,8 +1,14 @@
-package settings
+package setting
 
 import (
+	"io/ioutil"
 	"log"
+	"os"
 	"os/user"
+
+	"gopkg.in/urfave/cli.v2"
+
+	"github.com/rodkranz/char7/modules/chatdata"
 )
 
 var (
@@ -39,4 +45,13 @@ func init() {
 	BackupName = ".c7"
 	MapCharset = ".c7map"
 	Dir = "./"
+}
+
+func Bootstrap(_ *cli.Context) error {
+	mapPath := HomeDir + "/" + MapCharset
+	if _, err := os.Stat(mapPath); os.IsNotExist(err) {
+		return ioutil.WriteFile(mapPath, chatdata.MustAsset(MapCharset), 0644)
+	}
+
+	return nil
 }

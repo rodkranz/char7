@@ -1,12 +1,13 @@
 package cmd
 
 import (
-	"fmt"
+	"os"
 
 	"gopkg.in/urfave/cli.v2"
 
 	"github.com/rodkranz/char7/modules/files"
-	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/logger"
+	"github.com/rodkranz/char7/modules/setting"
 )
 
 // Recovery is command for recovery any data transformed for application
@@ -16,8 +17,8 @@ var Recovery = &cli.Command{
 	Description: `restore backup files and overwride the file wripped.`,
 	Action:      runRecovery,
 	Flags: []cli.Flag{
-		stringFlag("dir, d", settings.Dir, "Define the folder that will looking for backup's file."),
-		stringFlag("backupName, bn", settings.BackupName, "Search files name with extension backup c7."),
+		stringFlag("dir, d", setting.Dir, "Define the folder that will looking for backup's file."),
+		stringFlag("backupName, bn", setting.BackupName, "Search files name with extension backup c7."),
 		boolFlag("remove, r", "Delete the backup file when finish."),
 	},
 }
@@ -29,8 +30,8 @@ func runRecovery(ctx *cli.Context) error {
 
 	// filter to find files
 	optFilter := &files.Filter{
-		Exts: []string{settings.BackupName},
-		Dir:  settings.Dir,
+		Exts: []string{setting.BackupName},
+		Dir:  setting.Dir,
 	}
 
 	paths, err := files.SearchFiles(optFilter)
@@ -40,29 +41,29 @@ func runRecovery(ctx *cli.Context) error {
 
 	total := 0
 	for _, backupPath := range paths {
-		if (len(backupPath) - len(settings.BackupName)) < 0 {
+		if (len(backupPath) - len(setting.BackupName)) < 0 {
 			continue
 		}
 
-		fmt.Fprintf(ctx.App.Writer, "Restouring %s...   ", backupPath)
-		restoreName := backupPath[:len(backupPath)-len(settings.BackupName)]
+		logger.Restore(backupPath)
+		restoreName := backupPath[:len(backupPath)-len(setting.BackupName)]
 		if err := files.Copy(backupPath, restoreName); err != nil {
-			fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+			logger.Fail()
 			continue
 		}
-		fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+		logger.Success()
 		total++
 
 		if ctx.IsSet("remove") {
-			fmt.Fprintf(ctx.App.Writer, "Removing backup %s...   ", backupPath)
-			if err := files.Delete(backupPath); err != nil {
-				fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+			logger.RemoveBackup(backupPath)
+			if err := os.Remove(backupPath); err != nil {
+				logger.Fail()
 				continue
 			}
-			fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+			logger.Success()
 		}
 	}
 
-	fmt.Fprintf(ctx.App.Writer, "Found %d backups, restoured %d files.\n", len(paths), total)
+	logger.InformationBackup(len(paths), total)
 	return nil
 }

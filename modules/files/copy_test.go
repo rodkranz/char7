@@ -18,8 +18,6 @@ func TestCopy(t *testing.T) {
 	fmt.Fprintf(f, mockTest)
 	f.Sync()
 
-	fmt.Printf(f.Name())
-
 	dstFile := f.Name() + "copied"
 
 	if err := Copy(f.Name(), dstFile); err != nil {

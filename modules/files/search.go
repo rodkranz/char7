@@ -6,8 +6,6 @@ import (
 	"strings"
 )
 
-var files []string
-
 // Filter define options of search
 type Filter struct {
 	FileName string
@@ -16,6 +14,7 @@ type Filter struct {
 }
 
 var optFilter *Filter
+var files []string
 
 func init() {
 	optFilter = new(Filter)
