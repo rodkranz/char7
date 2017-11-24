@@ -5,8 +5,8 @@ import (
 	"bytes"
 	"os"
 
-	"github.com/rodkranz/char7/modules/files"
 	"github.com/rodkranz/char7/modules/mapping"
+	"io/ioutil"
 )
 
 // HasChange the global variable that indicate has changes
@@ -43,5 +43,5 @@ func CharSet(src string) (err error) {
 		return err
 	}
 
-	return files.Write(src, buff.Bytes())
+	return ioutil.WriteFile(src, buff.Bytes(), 0644)
 }

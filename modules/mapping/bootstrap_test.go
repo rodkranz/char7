@@ -5,21 +5,14 @@ import (
 	"os"
 	"testing"
 
-	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/setting"
 )
 
 func Test_C7Config_Should_Exists_In_Home(t *testing.T) {
-	mapPath := settings.HomeDir + "/" + settings.MapCharset
-	if _, err := os.Stat(mapPath); os.IsNotExist(err) {
-		t.Errorf("Expected that %v exists in %v.", settings.MapCharset, settings.HomeDir)
-	}
-}
 
-func Test_C7Config_Should_Read_Map_From_Home(t *testing.T) {
-	mapPath := settings.HomeDir + "/" + settings.MapCharset
-	_, err := ReadCharSetJSON(mapPath)
-	if err != nil {
-		t.Errorf("Expected map should loaded from home, but got a error: %v", err.Error())
+	mapPath := setting.HomeDir + "/" + setting.MapCharset
+	if _, err := os.Stat(mapPath); os.IsNotExist(err) {
+		t.Errorf("Expected that %v exists in %v.", setting.MapCharset, setting.HomeDir)
 	}
 }
 

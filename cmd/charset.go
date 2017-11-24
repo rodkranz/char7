@@ -1,14 +1,15 @@
 package cmd
 
 import (
-	"fmt"
+	"os"
 	"strings"
 
 	"gopkg.in/urfave/cli.v2"
 
 	"github.com/rodkranz/char7/modules/charset"
 	"github.com/rodkranz/char7/modules/files"
-	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/logger"
+	"github.com/rodkranz/char7/modules/setting"
 )
 
 // CharSet is the main command for application
@@ -19,11 +20,11 @@ var CharSet = &cli.Command{
 	Description: `change key in map to value`,
 	Action:      runCharSet,
 	Flags: []cli.Flag{
-		stringFlag("ext, e", strings.Join(settings.ExtFile, ","), "Define the extension type to filter files"),
-		stringFlag("file, f", settings.FileName, "Define the file name that needs to change."),
-		stringFlag("dir, d", settings.Dir, "Define the folder that will looking for files."),
+		stringFlag("ext, e", strings.Join(setting.ExtFile, ","), "Define the extension type to filter files"),
+		stringFlag("file, f", setting.FileName, "Define the file name that needs to change."),
+		stringFlag("dir, d", setting.Dir, "Define the folder that will looking for files."),
 		boolFlag("backup, b", "Disable backup file when change charset"),
-		stringFlag("backupName, bn", settings.BackupName, "Define the file name that needs to change."),
+		stringFlag("backupName, bn", setting.BackupName, "Define the file name that needs to change."),
 	},
 }
 
@@ -36,14 +37,14 @@ func runCharSet(ctx *cli.Context) error {
 
 	// split extensions
 	if ctx.IsSet("ext") {
-		settings.ExtFile = strings.Split(ctx.String("ext"), ",")
+		setting.ExtFile = strings.Split(ctx.String("ext"), ",")
 	}
 
 	// filter to find files
 	optFilter := &files.Filter{
-		FileName: settings.FileName,
-		Exts:     settings.ExtFile,
-		Dir:      settings.Dir,
+		FileName: setting.FileName,
+		Exts:     setting.ExtFile,
+		Dir:      setting.Dir,
 	}
 
 	// search files using the filter defined by user
@@ -54,37 +55,37 @@ func runCharSet(ctx *cli.Context) error {
 
 	var total int
 	for _, path := range list {
-		bkpPath := path + settings.BackupName
-
+		bkpPath := path + setting.BackupName
 		if !ctx.IsSet("backup") {
-			fmt.Fprintf(ctx.App.Writer, "Copyng %s to %s...   ", path, bkpPath)
+			logger.Copy(path, bkpPath)
 			if e := files.Copy(path, bkpPath); e != nil {
-				fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+				logger.Fail()
 				continue
 			}
-			fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+			logger.Success()
 		}
 
-		fmt.Fprintf(ctx.App.Writer, "Finding chars to convert from %s..   ", path)
+		logger.Convert(path)
 		if e := charset.CharSet(path); e != nil {
-			fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+			logger.Fail()
 			continue
 		}
-		fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+		logger.Success()
 
+		//
 		if !charset.HasChange {
 			total++
 			if !ctx.IsSet("backup") {
-				fmt.Fprintf(ctx.App.Writer, "Deleting useless file %s..   ", path)
-				if err := files.Delete(bkpPath); err != nil {
-					fmt.Fprintln(ctx.App.Writer, "[FAIL]")
+				logger.Delete(path)
+				if err := os.Remove(bkpPath); err != nil {
+					logger.Fail()
 					continue
 				}
-				fmt.Fprintln(ctx.App.Writer, "[SUCCESS]")
+				logger.Success()
 			}
 		}
 	}
 
-	fmt.Fprintf(ctx.App.Writer, "Found %d files, changed %d files.\n", len(list), total)
+	logger.Information(len(list), total)
 	return nil
 }

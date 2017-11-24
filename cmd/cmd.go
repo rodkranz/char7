@@ -3,7 +3,7 @@ package cmd
 import (
 	"gopkg.in/urfave/cli.v2"
 
-	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/setting"
 )
 
 func stringFlag(name, value, usage string) *cli.StringFlag {
@@ -23,18 +23,18 @@ func boolFlag(name, usage string) *cli.BoolFlag {
 
 func parseFlags(ctx *cli.Context) {
 	if ctx.IsSet("dir") {
-		settings.Dir = ctx.String("dir")
+		setting.Dir = ctx.String("dir")
 	}
 
 	if ctx.IsSet("backupName") {
-		settings.BackupName = ctx.String("backupName")
+		setting.BackupName = ctx.String("backupName")
 	}
 
 	if ctx.IsSet("map") {
-		settings.MapCharset = ctx.String("map")
+		setting.MapCharset = ctx.String("map")
 	}
 
 	if ctx.IsSet("file") {
-		settings.FileName = ctx.String("file")
+		setting.FileName = ctx.String("file")
 	}
 }

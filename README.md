@@ -6,7 +6,7 @@ Replace Utf8 encoding to Ascii code
 ### Source ###
 
 * Char7 Source
-* Version: 1.0.0
+* Version: 1.0.2
 * License: ISC
 
 
@@ -14,22 +14,12 @@ Replace Utf8 encoding to Ascii code
 
 ## How to Compile it
 
- You can see the full available binary list [here](https://gobuild.io/rodkranz/char7) 
+ You can see the full available binary list [here](https://github.com/rodkranz/char7/releases) 
  or compile those files from different platforms in your owner computer.
 
 ### Download 
     
-   Download for [Mac OSx](http://tmpcode.com/char7/char7-darwin-amd64.zip)
-   
-   Download for [Linux 386](http://tmpcode.com/char7/char7-linux-386.zip)
-   
-   Download for [Linux amd64](http://tmpcode.com/char7/char7-linux-amd64.zip)
-   
-   Download for [Linux arm](http://tmpcode.com/char7/char7-linux-arm.zip)
-   
-   Download for [Windows 386](http://tmpcode.com/char7/char7-windows-386.zip)
-   
-   Download for [Windows amd64](http://tmpcode.com/char7/char7-windows-amd64.zip)
+   [Download Binaries](https://github.com/rodkranz/char7/releases)
     
 ### Requirements
 

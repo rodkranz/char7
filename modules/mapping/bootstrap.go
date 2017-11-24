@@ -8,8 +8,7 @@ import (
 	"strings"
 
 	"github.com/rodkranz/char7/modules/chatdata"
-	"github.com/rodkranz/char7/modules/files"
-	"github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/setting"
 )
 
 type c7 struct {
@@ -39,7 +38,7 @@ func ReadCharSetJSON(src string) (C7Map, error) {
 	var jsonParser *json.Decoder
 	charsetMap, err := os.Open(src)
 	if err != nil {
-		arrBytes := chatdata.MustAsset(settings.MapCharset)
+		arrBytes := chatdata.MustAsset(setting.MapCharset)
 		bsRead := bytes.NewReader(arrBytes)
 		jsonParser = json.NewDecoder(bsRead)
 	} else {
@@ -56,12 +55,5 @@ func ReadCharSetJSON(src string) (C7Map, error) {
 
 // GetMapping returns map of things that must be replaced
 func GetMapping() (C7Map, error) {
-	return ReadCharSetJSON(settings.MapCharset)
-}
-
-func init() {
-	mapPath := settings.HomeDir + "/" + settings.MapCharset
-	if _, err := os.Stat(mapPath); os.IsNotExist(err) {
-		files.Write(mapPath, chatdata.MustAsset(settings.MapCharset))
-	}
+	return ReadCharSetJSON(setting.MapCharset)
 }

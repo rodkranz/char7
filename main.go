@@ -2,15 +2,14 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"runtime"
 
 	"gopkg.in/urfave/cli.v2"
 
 	"github.com/rodkranz/char7/cmd"
-	_ "github.com/rodkranz/char7/modules/mapping"
-	_ "github.com/rodkranz/char7/modules/settings"
+	"github.com/rodkranz/char7/modules/setting"
 )
 
 // AppName is the application name
@@ -29,12 +28,11 @@ func main() {
 		Name:        AppName,
 		Usage:       "CharSet convert",
 		Description: "Replace Utf8 encoding to Ascii code",
-		Authors: []*cli.Author{
-			{
-				Name:  "Rodrigo Kranz",
-				Email: "kranz@null.net",
-			},
-		},
+		Authors: []*cli.Author{{
+			Name:  "Rodrigo Kranz",
+			Email: "kranz@null.net",
+		}},
+		Before:  setting.Bootstrap,
 		Version: AppVer,
 		Commands: []*cli.Command{
 			cmd.CharSet,
@@ -46,9 +44,8 @@ func main() {
 	err := app.Run(os.Args)
 
 	if err != nil {
-		fmt.Fprintf(app.Writer, "Error: %s\n", err.Error())
+		log.Fatalf("Error: %s\n", err.Error())
 		os.Exit(1)
 	}
-
 	os.Exit(0)
 }
